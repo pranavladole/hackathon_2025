@@ -1,0 +1,27 @@
+<!-- Navigation -->
+<nav class="nav-bar">
+  <a routerLink="/statuscode-analyzer" routerLinkActive="active"
+    >Status Code Analyzer</a
+  >
+  <a routerLink="/zero-traffic" routerLinkActive="active">Zero Traffic</a>
+  <a routerLink="/percent-increase" routerLinkActive="active"
+    >Percent-Increase</a
+  >
+  <a routerLink="/percent-decrease" routerLinkActive="active"
+    >Percent-Decrease</a
+  >
+  <a routerLink="/chatbot" routerLinkActive="active">Chat-Bot</a>
+  <a routerLink="/email-notification" routerLinkActive="active"
+    >Email-Notification</a
+  >
+</nav>
+
+<!-- Alerts -->
+
+<div class="alert error" *ngIf="showError">
+  ❌ Failed to fetch traffic data!
+  <button class="close-btn" (click)="showError = false">&times;</button>
+</div>
+
+<!-- Main router outlet -->
+<router-outlet></router-outlet>

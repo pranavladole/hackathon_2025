@@ -1,0 +1,30 @@
+<div class="chat-container">
+  <div class="chat-messages">
+    <div *ngFor="let msg of messages" class="message">
+      <p class="user-msg"><strong>You:</strong> {{ msg.user }}</p>
+      <p class="bot-msg"><strong>Bot:</strong> {{ msg.bot }}</p>
+    </div>
+  </div>
+
+  <!-- Show loader when loading -->
+  <div *ngIf="isLoading" class="loader-container">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Chatbot message area -->
+  <div *ngIf="!isLoading"></div>
+
+  <div class="chat-input">
+    <input
+      [(ngModel)]="userMessage"
+      placeholder="Ask me"
+      (keydown.enter)="send()"
+    />
+
+    <div class="form-group">
+      <button (click)="send()" class="submit-btn" [disabled]="isLoading">
+        <i class="bi bi-send me-2"></i> Submit
+      </button>
+    </div>
+  </div>
+</div>

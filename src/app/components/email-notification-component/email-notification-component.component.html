@@ -1,0 +1,75 @@
+<div class="email-notification-container">
+  <h2>Email Notification</h2>
+
+  <form (ngSubmit)="submitNotification()" #notificationForm="ngForm">
+    <!-- Notification Type Dropdown -->
+    <div class="form-group">
+      <label for="notificationType">Select Notification Type:</label>
+      <select
+        id="notificationType"
+        class="form-control"
+        [(ngModel)]="selectedNotificationType"
+        name="notificationType"
+        required
+      >
+        <option value="">-- Select --</option>
+        <option value="zeroTraffic">Zero Traffic</option>
+        <option value="zeroTraffic">Percent-Increase 30%</option>
+        <option value="zeroTraffic">Percent-Decrease 30%</option>
+        <!-- Add more notification types if needed -->
+      </select>
+    </div>
+
+    <!-- Sub Dropdown for Zero Traffic (Time Range) -->
+    <div class="form-group" *ngIf="selectedNotificationType === 'zeroTraffic'">
+      <label for="timeRange">Select Time Range:</label>
+      <select
+        id="timeRange"
+        class="form-control"
+        [(ngModel)]="selectedTimeRange"
+        name="timeRange"
+        required
+      >
+        <option value="">-- Select Time Range --</option>
+        <option value="1">Every 1 Hour</option>
+        <option value="4">Every 4 Hours</option>
+        <option value="8">Every 8 Hours</option>
+        <option value="12">Every 12 Hours</option>
+        <option value="24">Every 24 Hours</option>
+      </select>
+    </div>
+
+    <!-- Email DL Input -->
+    <div class="form-group">
+      <label for="emailDL">Email Distribution</label>
+      <input
+        type="text"
+        id="emailDL"
+        name="emailDL"
+        class="form-control"
+        [(ngModel)]="emailDL"
+        required
+        emailListValidator
+        placeholder="Enter email distribution list"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      class="submit-btn"
+      type="submit"
+      [disabled]="!notificationForm.form.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<!-- Popup Toast -->
+<div
+  class="toast-message"
+  *ngIf="showSuccessMessage"
+  (click)="showSuccessMessage = false"
+>
+  Email notification generated successfully!
+</div>

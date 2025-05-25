@@ -1,0 +1,52 @@
+<div style="padding: 20px; max-width: 600px; margin: auto">
+  <h2>Status Code Analyzer</h2>
+
+  <!-- Date Inputs -->
+  <label for="start">Start Date & Time:</label>
+  <input
+    type="datetime-local"
+    [(ngModel)]="startDate"
+    id="start"
+    class="form-control"
+  />
+  <br />
+  <br />
+  <label for="end">End Date & Time:</label>
+  <input
+    type="datetime-local"
+    [(ngModel)]="endDate"
+    id="end"
+    class="form-control"
+  />
+  <br />
+  <!-- Submit Button -->
+
+  <div class="form-group">
+    <button (click)="submitDates()" class="submit-btn" [disabled]="isLoading">
+      <i class="bi bi-send me-2"></i> Submit
+    </button>
+  </div>
+
+  <!-- Response Table -->
+  <div *ngIf="responseData.length > 0" style="margin-top: 20px">
+    <h4>Response Data:</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Service Name</th>
+          <th>Status Code</th>
+          <th>Yesterday's Count</th>
+          <th>Today's Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of responseData">
+          <td>{{ item.servicename }}</td>
+          <td>{{ item.statusCode }}</td>
+          <td>{{ item.yesterdayCount }}</td>
+          <td>{{ item.todayCount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

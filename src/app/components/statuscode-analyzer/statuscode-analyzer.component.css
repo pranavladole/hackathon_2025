@@ -1,0 +1,69 @@
+/* Form container */
+form, .form-group {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Table styling */
+table.table-bordered {
+  border-collapse: collapse;
+  width: 100%;
+  border: 2px solid #dee2e6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table.table-bordered th,
+table.table-bordered td {
+  border: 1px solid #dee2e6;
+  padding: 12px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+table.table-bordered th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Zebra striping */
+table.table-bordered tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+table.table-bordered tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Submit button */
+.submit-btn {
+  background-color: #f1c40f;
+  color: #1c1c1c;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-weight: 900;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  margin-top: 1px;
+  float: right;
+}
+
+.submit-btn:disabled {
+  background-color: #f7e87a;
+  cursor: not-allowed;
+  color: #7f8c8d;
+}
+
+.submit-btn:not(:disabled):hover {
+  background-color: #d4b30a;
+  color: #fff;
+}
