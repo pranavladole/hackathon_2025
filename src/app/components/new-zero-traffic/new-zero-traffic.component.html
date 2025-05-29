@@ -1,0 +1,57 @@
+<div class="container">
+  <h2>Zero Traffic Analyzer</h2>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="start">Enter End Time:</label>
+      <input
+        class="form-control"
+        type="datetime-local"
+        [(ngModel)]="endDate"
+        id="start"
+      />
+    </div>
+
+    <div class="form-group">
+      <button (click)="submitDates()" class="submit-btn" [disabled]="isLoading">
+        <i class="bi bi-send me-2"></i> Submit
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Loader -->
+<div *ngIf="isLoading" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<!-- Data Table -->
+<div *ngIf="responseData && responseData.length > 0" class="table-container">
+  <h4>Zero Traffic Clients</h4>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Client Name</th>
+        <th>Service Name</th>
+        <th>Channel</th>
+        <th>Yesterday's Count</th>
+        <th>Today's Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of responseData">
+        <td>{{ item.clientId }}</td>
+        <td>{{ item.servicename }}</td>
+        <td>{{ item.channel }}</td>
+        <td>{{ item.yesterdayCount }}</td>
+        <td>{{ item.todayCount }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div
+  *ngIf="!isLoading && responseData && responseData.length === 0"
+  class="no-data"
+>
+  <p>No data available for the selected time range.</p>
+</div>
