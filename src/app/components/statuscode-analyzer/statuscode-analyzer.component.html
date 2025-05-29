@@ -29,14 +29,20 @@
 
   <!-- Response Table -->
   <div *ngIf="responseData.length > 0" style="margin-top: 20px">
-    <h4>Response Data:</h4>
+    <h4>Response Received:</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Service Name</th>
           <th>Status Code</th>
-          <th>Yesterday's Count</th>
-          <th>Today's Count</th>
+          <th>
+            Previous Day Hits <br />
+            {{ edateOnly }}
+          </th>
+          <th>
+            Hits on <br />
+            {{ sdateOnly }}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -49,4 +55,8 @@
       </tbody>
     </table>
   </div>
+</div>
+<!-- HTML -->
+<div *ngIf="responseData && responseData.length === 0" class="no-data">
+  <p>No data available for the selected time range.</p>
 </div>

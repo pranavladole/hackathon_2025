@@ -1,8 +1,7 @@
-<div style="padding: 20px; max-width: 600px; margin: auto">
+<div class="container">
   <h2>Traffic Increase Analyzer</h2>
 
   <!-- Date Inputs -->
-
   <div class="date-inputs-row">
     <div class="form-group me-3">
       <label for="start">Start Date & Time:</label>
@@ -24,9 +23,9 @@
       />
     </div>
   </div>
-  <br />
+
   <!-- Submit Button -->
-  <div class="form-group">
+  <div class="form-group" style="display: flex; justify-content: flex-end">
     <button (click)="submitDates()" class="submit-btn" [disabled]="isLoading">
       <i class="bi bi-send me-2"></i> Submit
     </button>
@@ -36,8 +35,10 @@
   <div *ngIf="isLoading" class="loader-container">
     <div class="loader"></div>
   </div>
+
+  <!-- Results Section -->
   <div *ngIf="!isLoading" class="content">
-    <!-- Left Section: Response Table -->
+    <!-- Left: Response Table -->
     <div class="left-section">
       <h4>Increase Traffic Report:</h4>
       <table *ngIf="responseData.length > 0" class="styled-table">
@@ -67,18 +68,20 @@
         </tbody>
       </table>
 
-      <div
-        *ngIf="clientReport.clients.length > 0"
-        style="margin-top: 20px; font-style: italic; color: #27ae60"
-      >
+      <div *ngIf="clientReport.clients.length > 0" class="positive-feedback">
         Traffic looks good for all clients.
       </div>
     </div>
 
-    <!-- Right Section: Copilot Response -->
+    <!-- Right: Copilot Response -->
     <div class="right-section">
       <h4>Generated Response:</h4>
       <div [innerHTML]="copilotResponseSanitized"></div>
     </div>
   </div>
 </div>
+
+<!-- No Data Message -->
+<!-- <div *ngIf="responseData && responseData.length === 0" class="no-data">
+  <p>No data available for the selected time range.</p>
+</div> -->
